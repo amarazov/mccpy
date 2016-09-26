@@ -25,7 +25,7 @@ for run in range(N_runs):
     pylab.xticks([])
     pylab.yticks([])
     pylab.savefig('pebble_basic_movie_'+number_string+'.png', transparent=False)
-    pylab.show()
+    #pylab.show()
     pylab.clf()
     # End of graphical output
     site = neighbor[site][ random.randint(0, 3)]
