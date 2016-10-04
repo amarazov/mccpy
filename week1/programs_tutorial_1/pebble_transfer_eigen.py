@@ -7,7 +7,7 @@ transfer = numpy.zeros((9, 9))
 for k in range(9):
     for neigh in range(4): transfer[neighbor[k][neigh], k] += 0.25
 eigenvalues, eigenvectors = numpy.linalg.eig(transfer)
-print eigenvalues
+print(eigenvalues)
  
 # you may print the eigenvectors by uncommenting the following lines...
 #for iter in range(9):

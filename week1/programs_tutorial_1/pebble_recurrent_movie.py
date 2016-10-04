@@ -1,4 +1,4 @@
-import math, random, pylab
+import math, random, pylab, os
 
 sigma = 0.4
 epsilon = 0.1
@@ -7,6 +7,9 @@ s_map = [(1.0, 1.0), (2.0, 1.0)]
 neighbor =  [[1], [0]]
 pos = 0
 tmax = 20
+
+os.system('mkdir graphics')
+
 for iter in range(tmax):
     # Begin of the graphics output
     pylab.figure()
@@ -19,10 +22,12 @@ for iter in range(tmax):
     pylab.axis([0.5, 2.5, 0.5, 1.5])
     pylab.xticks([])
     pylab.yticks([])
-    pylab.savefig('2x1pebble_epsilon'+number_string+'.png', transparent=True)
+    pylab.savefig('graphics/2x1pebble_epsilon'+number_string+'.png', transparent=True)
     pylab.close()
     # End of the graphics output
     newpos = neighbor[pos][0]
     if random.random() < epsilon:
         newpos = pos
     pos = newpos
+
+os.system("convert -delay 100 graphics/2x1pebble_epsilon*.png movie.mp4")

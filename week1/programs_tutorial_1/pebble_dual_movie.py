@@ -1,4 +1,4 @@
-import random, pylab
+import random, pylab, os
 
 random.seed('1234')
 sigma = 0.4
@@ -15,15 +15,18 @@ neighbor =  [[1, 3, 0, 0], [2, 4, 0, 1], [2, 5, 1, 2],
 color = 'red'  #chose 'red' or 'blue'
 site = 8
 tmax = 240
+
+os.system('mkdir graphics')
+
 for iter in range(tmax):
     period = 4
     if (iter%period) == 0:
-	# Begin of graphical output
+    # Begin of graphical output
         maxlength = len(str(tmax-1))
         number_string = str(iter).zfill(maxlength)
         if color == 'red':  cir = pylab.Circle(s_map_red[site],  radius=sigma, fc='r')
         if color == 'blue': cir = pylab.Circle(s_map_blue[site], radius=sigma, fc='b')
-	pylab.figure()
+        pylab.figure()
         pylab.gca().add_patch(cir)
         pylab.plot([0.5, 3.5], [0.5, 0.5], 'r')
         pylab.plot([0.5, 3.5], [1.5, 1.5], 'r')
@@ -43,21 +46,22 @@ for iter in range(tmax):
         pylab.xticks([])
         pylab.yticks([])
         number_string_filename = str(iter/period).zfill(3)
-        pylab.savefig('pebble_dual_movie_epsilon_'+number_string_filename+'.png', transparent=True)
+        pylab.savefig('graphics/pebble_dual_movie_epsilon_'+number_string_filename+'.png', transparent=True)
         pylab.clf()
         pylab.close()
-	# End of graphical output
+    # End of graphical output
     newsite = neighbor[site][ random.randint(0, 3)]
     newcolor = color
     if (color == 'red') and (site == 2) and (newsite == 2):
         if random.random() < epsilon:
             newcolor = 'blue'
             newsite = 6
-            print "transition red->blue at time = ", iter
+            print("transition red->blue at time = ", iter)
     if (color == 'blue') and (site == 6) and (newsite == 6):
         if random.random() < epsilon:
             newcolor = 'red'
             newsite = 2
-            print "transition blue->red at time = ", iter
+            print("transition blue->red at time = ", iter)
     site = newsite
     color = newcolor
+os.system("convert -delay 0.5 graphics/pebble_dual_movie_epsilon_*.png plot.mpg")

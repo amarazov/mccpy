@@ -9,5 +9,5 @@ for k in range(9):
 position = numpy.zeros(9)
 position[8] = 1.0
 for t in range(100):
-    print t,'  ',["%0.5f" % abs(i- 1.0 / 9.0) for i in position]
+    print(t,'  ',["%0.5f" % abs(i- 1.0 / 9.0) for i in position])
     position = numpy.dot(transfer, position)
