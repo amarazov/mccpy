@@ -1,6 +1,10 @@
-import scipy, scipy.stats
-x = scipy.linspace(-10,10,100)
-pmf = scipy.stats.binom.pmf(x,10,0.5)
-import pylab
-pylab.plot(x,pmf)
-pylab.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Plot between -10 and 10 with .001 steps.
+x_axis = np.arange(-10, 10, 0.001)
+# Mean = 0, SD = 2.
+plt.plot(x_axis, norm.pdf(x_axis,0,2))
+
+plt.show()
