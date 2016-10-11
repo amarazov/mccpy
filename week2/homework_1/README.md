@@ -6,7 +6,7 @@ A1
 
 Consider the program "direct_pi_multirun.py". Modify it so that it computes the root mean square (rms) deviation:
 
-rms deviation=\sqrt(1/n_runs \sum_{i=1}^{n_runs} (\pi^est_i−\pi)^2)
+rms deviation :math:`=\sqrt(1/n_runs \sum_{i=1}^{n_runs} (\pi^est_i−\pi)^2)`
 
 , where \pi^est_i is the estimation of pi in run i of direct_pi_multirun.py, while pi = 3.1415926... is the mathematical constant.
 
