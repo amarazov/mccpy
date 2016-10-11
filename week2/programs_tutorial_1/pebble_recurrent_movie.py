@@ -1,33 +1,52 @@
-import math, random, pylab, os
+import numpy as np
+from matplotlib import animation
+from matplotlib import pyplot as plt
+
+plt.style.use('ggplot')
 
 sigma = 0.4
 epsilon = 0.1
-pylab.figure()
-s_map = [(1.0, 1.0), (2.0, 1.0)] 
-neighbor =  [[1], [0]]
+s_map = [(1.0, 1.0), (2.0, 1.0)]
+neighbor = [[1], [0]]
 pos = 0
 tmax = 20
 
-os.system('mkdir graphics')
+fig = plt.figure()
 
-for iter in range(tmax):
-    # Begin of the graphics output
-    pylab.figure()
-    number_string = str(iter).zfill(len(str(tmax)))
-    cir = pylab.Circle(s_map[pos], radius=sigma, fc='r')
-    pylab.gca().add_patch(cir)
-    pylab.plot([1.5, 1.5], [0.5, 1.5], 'b')
-    pylab.title('t = '+ number_string)
-    pylab.axis('scaled')
-    pylab.axis([0.5, 2.5, 0.5, 1.5])
-    pylab.xticks([])
-    pylab.yticks([])
-    pylab.savefig('graphics/2x1pebble_epsilon'+number_string+'.png', transparent=True)
-    pylab.close()
-    # End of the graphics output
+ax = plt.axes(aspect='equal', autoscale_on=True)
+ax.set_xlim(0.5, 2.5), ax.set_xticks([])
+ax.set_ylim(0.5, 1.5), ax.set_yticks([])
+patch = plt.Circle(s_map[pos], radius=sigma, fc='r')
+plt.plot([1.5, 1.5], [0.5, 1.5], 'b')
+
+
+def init():
+    patch.center = s_map[pos]
+    ax.add_patch(patch)
+    ax.set_title('t = 0')
+    return patch,
+
+
+def animate(i):
+    global pos
+    number_string = str(i).zfill(len(str(tmax)))
     newpos = neighbor[pos][0]
-    if random.random() < epsilon:
+    if i % 2 == 1:
+        patch.set_color('y')
+    else:
+        patch.set_color('r')
+    if np.random.random() < epsilon:
         newpos = pos
     pos = newpos
+    patch.center = s_map[pos]
 
-os.system("convert -delay 100 graphics/2x1pebble_epsilon*.png movie.mp4")
+    ax.set_title('t = ' + number_string)
+    return patch
+
+
+anim = animation.FuncAnimation(fig, animate,
+                               init_func=init,
+                               frames=tmax,
+                               interval=1000,
+                               repeat=False)
+plt.show()

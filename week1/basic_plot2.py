@@ -1,13 +1,11 @@
-from matplotlib import pyplot as plt
-from matplotlib import style
 import numpy as np
+from matplotlib import pyplot as plt
 
+x, y = np.loadtxt('exampleFile.csv',
+                  unpack=True,
+                  delimiter=',')
 
-x,y = np.loadtxt('exampleFile.csv',
-                 unpack=True,
-                 delimiter = ',')
-
-plt.plot(x,y)
+plt.plot(x, y)
 
 plt.title('Epic Info $Omega$')
 plt.ylabel('Y axis')
