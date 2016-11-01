@@ -53,7 +53,7 @@ def animate(i):
 
 anim = animation.FuncAnimation(fig, animate,
                                frames=N_runs,
-                               interval=1000,
+                               interval=2000,
                                repeat=False,
                                )
 plt.show()

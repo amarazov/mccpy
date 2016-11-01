@@ -6,7 +6,7 @@ plt.style.use('ggplot')
 np.random.seed(1234)
 
 sigma = 0.4
-epsilon = 0.4  # probability to switch from red to blue pebble, and vice versa
+epsilon = 0.0  # probability to switch from red to blue pebble, and vice versa
 
 fig = plt.figure()
 
@@ -22,7 +22,7 @@ s_map_blue = [(x + offset, y - offset) for (x, y) in s_map_red]
 neighbor = [[1, 3, 0, 0], [2, 4, 0, 1], [2, 5, 1, 2],
             [4, 6, 3, 0], [5, 7, 3, 1], [5, 8, 4, 2],
             [7, 6, 6, 3], [8, 7, 6, 4], [8, 8, 7, 5]]
-color = ['red', ]  # chose 'red' or 'blue'
+color = ['blue', ]  # chose 'red' or 'blue'
 site = [8, ]
 tmax = 240
 patch = plt.Circle(s_map_red[site[0]], radius=sigma, fc='r')

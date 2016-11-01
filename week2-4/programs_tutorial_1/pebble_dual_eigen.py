@@ -9,7 +9,7 @@ for k in range(9):
         transfer[neighbor[k][neigh], k] += 0.25  # red pebble game
         transfer[neighbor[k][neigh] + 9, k + 9] += 0.25  # blue pebble game
 # small transition epsilon between red 2 and blue 6
-epsilon = 0.04
+epsilon = 0.0
 transfer[6 + 9, 2] = transfer[2, 6 + 9] = epsilon
 transfer[2, 2] -= epsilon
 transfer[6 + 9, 6 + 9] -= epsilon

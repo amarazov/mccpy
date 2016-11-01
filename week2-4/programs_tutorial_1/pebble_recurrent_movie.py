@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 plt.style.use('ggplot')
 
 sigma = 0.4
-epsilon = 0.1
+epsilon = 0.0
 s_map = [(1.0, 1.0), (2.0, 1.0)]
 neighbor = [[1], [0]]
 pos = 0
