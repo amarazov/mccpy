@@ -2,7 +2,9 @@
 
 ## Съобщения
 
-- ### Срокът за [първото домашно](https://bitbucket.org/montebianco/mccpy/src/9ea1b1b665a6c8d195de4c6256ea124b317acded/week2-4/homework_1/?at=master) 
+- ### Срокът за [първото домашно](https://bitbucket.org/montebianco/mccpy/src/9ea1b1b665a6c8d195de4c6256ea124b317acded/week2-4/homework_1/?at=master) e до 9.11.2016
+
+
 ## Въведение
 
 В това репозитори ще се публикуват програмите, които ще използваме по време на лекциите и упражненията. Всяка седмица ще има отделена директория.
