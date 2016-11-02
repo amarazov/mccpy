@@ -1,7 +1,13 @@
-import math
-import os
-import pylab
 import random
+
+import numpy as np
+from matplotlib import animation
+from matplotlib import pyplot as plt
+
+fig = plt.figure()
+border_color = 'k'
+plt.setp(plt.gca(), xticks=[0, 1], yticks=[0, 1], aspect='equal')
+ax = plt.axes(aspect='equal', autoscale_on=True)
 
 
 def dist(x, y):
@@ -9,7 +15,7 @@ def dist(x, y):
     d_x = min(d_x, 1.0 - d_x)
     d_y = abs(x[1] - y[1]) % 1.0
     d_y = min(d_y, 1.0 - d_y)
-    return math.sqrt(d_x ** 2 + d_y ** 2)
+    return np.sqrt(d_x ** 2 + d_y ** 2)
 
 
 def direct_disks(N, sigma):
@@ -30,24 +36,23 @@ def direct_disks(N, sigma):
     return n_iter, L
 
 
-img = 0
-output_dir = 'direct_disks_multirun_movie'
-if not os.path.exists(output_dir): os.makedirs(output_dir)
+circles = []
 
 
-def snapshot(pos, colors, border_color='k'):
-    global img
-    pylab.figure()
-    pylab.axis([0, 1, 0, 1])
-    [i.set_linewidth(2) for i in pylab.gca().spines.itervalues()]
-    [i.set_color(border_color) for i in pylab.gca().spines.itervalues()]
-    pylab.setp(pylab.gca(), xticks=[0, 1], yticks=[0, 1], aspect='equal')
-    for (x, y), c in zip(pos, colors):
-        circle = pylab.Circle((x, y), radius=sigma, fc=c)
-        pylab.gca().add_patch(circle)
-    pylab.savefig(output_dir + '/snapshot_%03i.png' % img)
-    pylab.close()
-    img += 1
+def init(arrow_scale=.2):
+    plt.axis([0, 1, 0, 1])
+    plt.setp(plt.gca(), xticks=[0, 1], yticks=[0, 1])
+    iterations, config = direct_disks(N, sigma)
+    print('run', -1)
+    print(iterations - 1, 'tabula rasa wipe-outs before producing the following configuration')
+    print(config)
+    config_per = periodicize(config)
+    for (x, y), c in zip(config_per, colors):
+        circle = plt.Circle((x, y), radius=sigma, fc=c)
+        circles.append(circle)
+        ax.add_patch(circle)
+    ax.set_title('t = -1')
+    return circles
 
 
 def periodicize(config):
@@ -57,17 +62,27 @@ def periodicize(config):
 
 N = 16
 eta = 0.28
-sigma = math.sqrt(eta / N / math.pi)
+sigma = np.sqrt(eta / N / np.pi)
 n_runs = 8
 colors = ['r' for i in range(8 * N)]
-for run in range(n_runs):
+
+
+def animate(run):
     iterations, config = direct_disks(N, sigma)
-    print
-    'run', run
-    print
-    iterations - 1, 'tabula rasa wipe-outs before producing the following configuration'
-    print
-    config
-    print
+    print('run', run)
+    print(iterations - 1, 'tabula rasa wipe-outs before producing the following configuration')
+    print(config)
     config_per = periodicize(config)
-    snapshot(config_per, colors, border_color='k')
+    for circle, c, in zip(circles, config_per):
+        circle.center = c
+    ax.set_title('t = ' + str(round(run, 4)))
+    return circles
+
+
+anim = animation.FuncAnimation(fig, animate,
+                               init_func=init,
+                               frames=n_runs,
+                               interval=3000,
+                               repeat=False)
+
+plt.show()

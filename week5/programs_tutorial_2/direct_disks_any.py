@@ -1,6 +1,7 @@
 import math
-import pylab
 import random
+
+import pylab
 
 
 def dist(x, y):
@@ -15,7 +16,7 @@ N = 16
 n_confs = 10 ** 5
 pairs = [(i, j) for i in range(N - 1) for j in range(i + 1, N)]
 eta_max_list = []
-for conf in xrange(n_confs):
+for conf in range(n_confs):
     L = [(random.random(), random.random()) for k in range(N)]
     sigma_max = min(dist(L[i], L[j]) for i, j in pairs) / 2.0
     eta_max = N * math.pi * sigma_max ** 2

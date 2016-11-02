@@ -8,6 +8,6 @@ print(eigenvalues)
 
 # you may print the eigenvectors by uncommenting the following lines...
 for iter in range(2):
-   print(eigenvalues[iter])
-   for i in range(2):
-      print(eigenvectors[i][iter])
+    print(eigenvalues[iter])
+    for i in range(2):
+        print(eigenvectors[i][iter])

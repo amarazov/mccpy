@@ -32,14 +32,9 @@ N = 16
 eta = 0.26
 sigma = math.sqrt(eta / N / math.pi)
 n_runs = 100
-print
-'Note that this program might take a while!'
+print('Note that this program might take a while!')
 for run in range(n_runs):
     iterations, config = direct_disks(N, sigma)
-    print
-    'run', run
-    print
-    iterations - 1, 'tabula rasa wipe-outs before producing the following configuration'
-    print
-    config
-    print
+    print('run', run)
+    print(iterations - 1, 'tabula rasa wipe-outs before producing the following configuration')
+    print(config)

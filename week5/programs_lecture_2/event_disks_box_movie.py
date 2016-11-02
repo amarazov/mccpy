@@ -1,6 +1,6 @@
-import math
-import os
-import pylab
+import numpy as np
+from matplotlib import animation
+from matplotlib import pyplot as plt
 
 output_dir = "event_disks_box_movie"
 colors = ['r', 'b', 'g', 'orange']
@@ -24,7 +24,7 @@ def pair_time(pos_a, vel_a, pos_b, vel_b, sigma):
     scal = del_v[0] * del_x[0] + del_v[1] * del_x[1]
     Upsilon = scal ** 2 - del_v_sq * (del_x_sq - 4.0 * sigma ** 2)
     if Upsilon > 0.0 and scal < 0.0:
-        del_t = - (scal + math.sqrt(Upsilon)) / del_v_sq
+        del_t = - (scal + np.sqrt(Upsilon)) / del_v_sq
     else:
         del_t = float('inf')
     return del_t
@@ -47,7 +47,7 @@ def compute_new_velocities(pos, vel, next_event_arg):
     else:
         a, b = pairs[next_event_arg - len(singles)]
         del_x = [pos[b][0] - pos[a][0], pos[b][1] - pos[a][1]]
-        abs_x = math.sqrt(del_x[0] ** 2 + del_x[1] ** 2)
+        abs_x = np.sqrt(del_x[0] ** 2 + del_x[1] ** 2)
         e_perp = [c / abs_x for c in del_x]
         del_v = [vel[b][0] - vel[a][0], vel[b][1] - vel[a][1]]
         scal = del_v[0] * e_perp[0] + del_v[1] * e_perp[1]
@@ -56,26 +56,22 @@ def compute_new_velocities(pos, vel, next_event_arg):
             vel[b][k] -= e_perp[k] * scal
 
 
-pylab.subplots_adjust(left=0.10, right=0.90, top=0.90, bottom=0.10)
-pylab.gcf().set_size_inches(6, 6)
-img = 0
-if not os.path.exists(output_dir): os.makedirs(output_dir)
+fig = plt.figure()
+
+ax = plt.axes(aspect='equal', autoscale_on=True)
+
+circles = []
 
 
-def snapshot(t, pos, vel, colors, arrow_scale=.2):
-    global img
-    pylab.cla()
-    pylab.axis([0, 1, 0, 1])
-    pylab.setp(pylab.gca(), xticks=[0, 1], yticks=[0, 1])
-    for (x, y), (dx, dy), c in zip(pos, vel, colors):
-        dx *= arrow_scale
-        dy *= arrow_scale
-        circle = pylab.Circle((x, y), radius=sigma, fc=c)
-        pylab.gca().add_patch(circle)
-        pylab.arrow(x, y, dx, dy, fc="k", ec="k", head_width=0.05, head_length=0.05)
-    pylab.text(.5, 1.03, 't = %.2f' % t, ha='center')
-    pylab.savefig(os.path.join(output_dir, '%04i.png' % img))
-    img += 1
+def init():
+    plt.axis([0, 1, 0, 1])
+    plt.setp(plt.gca(), xticks=[0, 1], yticks=[0, 1])
+    for (x, y), c in zip(pos, colors):
+        circle = plt.Circle((x, y), radius=sigma, fc=c)
+        circles.append(circle)
+        ax.add_patch(circle)
+    ax.set_title('t = 0')
+    return circles
 
 
 pos = [[0.25, 0.25], [0.75, 0.25], [0.25, 0.75], [0.75, 0.75]]
@@ -85,10 +81,13 @@ pairs = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
 sigma = 0.15
 t = 0.0
 dt = 0.02  # dt=0 corresponds to event-to-event animation
-n_steps = 100
+n_runs = 1000
+
 next_event, next_event_arg = compute_next_event(pos, vel)
-snapshot(t, pos, vel, colors)
-for step in range(n_steps):
+
+
+def animate(i):
+    global t, next_event, next_event_arg
     if dt:
         next_t = t + dt
     else:
@@ -102,10 +101,16 @@ for step in range(n_steps):
     for k, l in singles: pos[k][l] += vel[k][l] * remain_t
     t += remain_t
     next_event -= remain_t
-    snapshot(t, pos, vel, colors)
-    print
-    'time', t
+    for circle, c, in zip(circles, pos):
+        circle.center = c
+    ax.set_title('t = ' + str(round(t, 4)))
+    return circles
 
-print('Producing animation.gif using ImageMagick...')
-os.system("convert -delay 1 -dispose Background +page " + str(output_dir)
-          + "/*.png -loop 0 " + str(output_dir) + "/animation.gif")
+
+anim = animation.FuncAnimation(fig, animate,
+                               init_func=init,
+                               frames=n_runs,
+                               interval=100,
+                               repeat=False)
+
+plt.show()

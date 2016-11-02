@@ -13,5 +13,4 @@ for i in range(n_runs):
     conf = configurations[(red_rod, blue_rod)]
     counts[conf] += 1
 for conf in counts:
-    print
-    conf, counts[conf] / float(n_runs)
+    print(conf, counts[conf] / float(n_runs))
