@@ -36,11 +36,11 @@ show_conf(L, sigma, 'test graph', 'one_disk.png')
 
 Download (cut-and-paste) and run Preparation Program 1. Explain in a few words each:
 
-- Which geometrical object does it draw?
-- What is the color of the object, and where is it specified?
-- How does it implement periodic boundary conditions?
-- What makes that you can see it on the computer screen?
-- Does this program create a file? What is this file's name? How would you change it?
+* Which geometrical object does it draw?
+* What is the color of the object, and where is it specified?
+* How does it implement periodic boundary conditions?
+* What makes that you can see it on the computer screen?
+* Does this program create a file? What is this file's name? How would you change it?
 
 ## A2
 
@@ -75,11 +75,11 @@ f.close()
 
 Run Preparation Program 2, then run it a second time. Explain in a few words each:
 
-- What does the "if os.path.isfile(filename)" condition test?
-- What is the difference between "f = open(filename, 'r')" and "f = open(filename, 'w')"?
-- What is the meaning of "a, b = line.split()"
-- What is the meaning of "f.write(str(a[0]) + ' ' + str(a[1]) + '\n')", and in particular of the "\n"?
-- What is this program's potential use?
+* What does the "if os.path.isfile(filename)" condition test?
+* What is the difference between "f = open(filename, 'r')" and "f = open(filename, 'w')"?
+* What is the meaning of "a, b = line.split()"
+* What is the meaning of "f.write(str(a[0]) + ' ' + str(a[1]) + '\n')", and in particular of the "\n"?
+* What is this program's potential use?
 
 ## B
 
@@ -89,18 +89,18 @@ In this section, you write your own Markov-chain Monte Carlo simulation program 
 
 To construct my_markov_disks.py, start from markov_disks_box.py presented in lecture 2:
 
-- Copy-and-paste the function dist() from direct_disks_multirun.py (presented by Alberto in Tutorial 2) into my_markov_disks.py. Note that dist() returns the distance between two disks and it already handles periodic boundary conditions. It is available on the Coursera website (in direct_disks_multirun.py).
-- Modify the algorithm for periodic boundary conditions, that is, incorporate the dist() function.
-- Attention: there are no more walls and wall collisions. Use the modulo operator (%) discussed in this homework's introductory paragraph to ensure that, after each accepted move, x and y positions of each disk are folded back into the interval 0.0 <= x < 1.0
-- Run this algorithm for four disks
-- Print your program.
+* Copy-and-paste the function dist() from direct_disks_multirun.py (presented by Alberto in Tutorial 2) into my_markov_disks.py. Note that dist() returns the distance between two disks and it already handles periodic boundary conditions. It is available on the Coursera website (in direct_disks_multirun.py).
+* Modify the algorithm for periodic boundary conditions, that is, incorporate the dist() function.
+* Attention: there are no more walls and wall collisions. Use the modulo operator (%) discussed in this homework's introductory paragraph to ensure that, after each accepted move, x and y positions of each disk are folded back into the interval 0.0 <= x < 1.0
+* Run this algorithm for four disks
+* Print your program.
 
 ## B2
 
 Further modify my_markov_disks.py in two ways:
 
-- The covering density (eta) is defined as the number of disks times the area of one disk, divided by the total system area: eta = N * (pi * sigma ** 2). Modify your program so that the value of eta is fixed, and the radius sigma is deduced from it. Do not use (at this point) densities eta larger than 0.75.
-- Incorporate Preparation program 1 in my_markov_disks.py, so that you can plot the final configuration produced by the program (do not attempt to plot intermediate configurations, this often poses problems in Python).
+* The covering density (eta) is defined as the number of disks times the area of one disk, divided by the total system area: eta = N * (pi * sigma ** 2). Modify your program so that the value of eta is fixed, and the radius sigma is deduced from it. Do not use (at this point) densities eta larger than 0.75.
+* Incorporate Preparation program 1 in my_markov_disks.py, so that you can plot the final configuration produced by the program (do not attempt to plot intermediate configurations, this often poses problems in Python).
 
 Print this new program (which simulates disks in the periodic box and is able to produce graphics).
 
@@ -132,27 +132,27 @@ with correct values of N_sqrt and two_delxy (and with a correct choice of sigma,
 
 Choose a stepsize (delta) on the order of sigma, for example 0.3 sigma, or 0.5 sigma. The value itself in uncritical.The program should work for N equal to a square number, not for general N. The final configuration should then be saved in a file, as indicated in Preparation program 2, ready for reuse at the next run of my_markov_disks.py.
 
-- Indicate up to which density the square-lattice initial configuration is legal.
+* Indicate up to which density the square-lattice initial configuration is legal.
 
 ## B3 (continued)
-- Print your program.
-- Print the initial configuration (as a graphics file) for N = 256 at density eta= 0.72. (Note that you can do this easily by setting n_steps = 0).
+* Print your program.
+* Print the initial configuration (as a graphics file) for N = 256 at density eta= 0.72. (Note that you can do this easily by setting n_steps = 0).
 
 ## B4
 
 Run my_markov_disks.py for N = 64, n_steps = 10000, at eta = 0.42 from the square lattice initial condition, then repeatedly using as initial configuration the final configuration of the previous run. 
 
-- Print the initial configuration (as a graphics file) of the sequence of runs (set n_steps = 0 to plot it)
-- Print the final configuration (as a graphics file) of the entire sequence of run.
-- Explain what you see (describe the final configuration and how the simulation got there).
+* Print the initial configuration (as a graphics file) of the sequence of runs (set n_steps = 0 to plot it)
+* Print the final configuration (as a graphics file) of the entire sequence of run.
+* Explain what you see (describe the final configuration and how the simulation got there).
 
 ## B5
 
 Run my_markov_disks.py for N = 64, n_steps = 10000, at eta = 0.72 from the square lattice initial condition, then at least ten times using as initial configuration the final configuration of the previous run.
 
-- Print at least one intermediate configuration (as graphics files) of the entire run (To upload several intermediate configurations, you may join the graphics files into one big file).
-- Print the final configuration of the entire sequence of runs.
-- Explain what you see (give some physical explanation of what the configurations look like).
+* Print at least one intermediate configuration (as graphics files) of the entire run (To upload several intermediate configurations, you may join the graphics files into one big file).
+* Print the final configuration of the entire sequence of runs.
+* Explain what you see (give some physical explanation of what the configurations look like).
 
 
 ## C
@@ -222,15 +222,15 @@ Incorporate this snippet into my_markov_disks.py, and produce a plot of the mean
 
 For simplicity, you may follow this scheme
 
-- start at eta = 0.72 (with a "well-thermalized" configuration, produced by a long run of the program of point B3)
-- compute |Psi_6| every 100 steps
-- decrease the density by a small amount (e.g. 0.02) after each 10000 steps, using the final configuration at higher density as initial configuration at lower density,
-- repeat till you reach a low density (e.g. eta=0.2).
+* start at eta = 0.72 (with a "well-thermalized" configuration, produced by a long run of the program of point B3)
+* compute |Psi_6| every 100 steps
+* decrease the density by a small amount (e.g. 0.02) after each 10000 steps, using the final configuration at higher density as initial configuration at lower density,
+* repeat till you reach a low density (e.g. eta=0.2).
 
 Once the code is ready:
-- print the program.
-- Print the produced plot for the average of |Psi_6| as function of the density eta (put correct labels on the axis). If the program takes too much time, reduce the number of steps to 5000. If you have time, feel free to use more values of eta, or to perform longer runs. NB: in any case, your plot will be qualitative at high density, as we cannot reach large enough simulation times, even for 64 disks. But notice that we are following a completely correct procedure.
-- Comment the plot: how does the average of |Psi_6| depend on the density eta? What happens at low density? What happens at high density?
+* print the program.
+* Print the produced plot for the average of |Psi_6| as function of the density eta (put correct labels on the axis). If the program takes too much time, reduce the number of steps to 5000. If you have time, feel free to use more values of eta, or to perform longer runs. NB: in any case, your plot will be qualitative at high density, as we cannot reach large enough simulation times, even for 64 disks. But notice that we are following a completely correct procedure.
+* Comment the plot: how does the average of |Psi_6| depend on the density eta? What happens at low density? What happens at high density?
 
 NB: You should realize that getting to this version of my_markov_disks.py, through all the previous steps, constitutes a considerable achievement!
 
