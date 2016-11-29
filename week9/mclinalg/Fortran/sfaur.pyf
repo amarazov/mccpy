@@ -1,0 +1,71 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module sfaur ! in 
+    interface  ! in :sfaur
+        subroutine insfaur(flag,dimen,atmost,quasi,max_bn,iflag,maxx) ! in :sfaur:sfaur.f
+            logical dimension(2),intent(out) :: flag
+            integer*4,intent(in) :: dimen
+            integer*4,intent(in) :: atmost
+            real*8 dimension(500),intent(out) :: quasi
+            integer*4,intent(in) :: max_bn
+            integer,intent(in) :: iflag
+            integer*4,intent(out) :: maxx
+            integer*4 :: s
+            integer*4 :: qs
+            integer*4 :: hisum
+            integer*4 dimension(500,30,30) :: scoef
+            integer*4 :: nextn
+            integer*4 :: testn
+            real*8 :: rqs
+            integer*4 dimension(30) :: pgtemp
+            integer*4 dimension(500,30) :: ztemp
+            integer*4 dimension(500,30,30) :: coef
+            common /faure/ s,qs,hisum,scoef,nextn,testn,rqs,pgtemp,ztemp,coef
+        end subroutine insfaur
+        function exor(iin,jin) ! in :sfaur:sfaur.f
+            integer*4 :: iin
+            integer*4 :: jin
+            integer :: exor
+        end function exor
+        subroutine genscrml(lsm,shift,max_bn) ! in :sfaur:sfaur.f
+            integer*4 dimension(500,30,30) :: lsm
+            integer*4 dimension(500,30) :: shift
+            integer*4 :: max_bn
+            integer*4 :: s
+            integer*4 :: qs
+            integer*4 :: hisum
+            common /faure/ s,qs,hisum
+        end subroutine genscrml
+        subroutine genscrmu(usm,ushift,max_bn) ! in :sfaur:sfaur.f
+            integer*4 dimension(30,30) :: usm
+            integer*4 dimension(30) :: ushift
+            integer*4 :: max_bn
+            integer*4 :: s
+            integer*4 :: qs
+            integer*4 :: hisum
+            common /faure/ s,qs,hisum
+        end subroutine genscrmu
+        subroutine gosfaur(quasi,max_bn) ! in :sfaur:sfaur.f
+            real*8 dimension(500),intent(out) :: quasi
+            integer*4,intent(in) :: max_bn
+            integer*4 :: s
+            integer*4 :: qs
+            integer*4 :: hisum
+            integer*4 dimension(500,30,30) :: scoef
+            integer*4 :: nextn
+            integer*4 :: testn
+            real*8 :: rqs
+            integer*4 dimension(30) :: pgtemp
+            integer*4 dimension(500,30) :: ztemp
+            integer*4 dimension(500,30,30) :: coef
+            common /faure/ s,qs,hisum,scoef,nextn,testn,rqs,pgtemp,ztemp,coef
+        end subroutine gosfaur
+        function uni() ! in :sfaur:sfaur.f
+            double precision :: uni
+        end function uni
+    end interface 
+end python module sfaur
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/

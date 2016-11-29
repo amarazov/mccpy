@@ -1,0 +1,69 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+block data bdsobl ! in ssobol.f
+    integer, optional,dimension(39) :: poly=3
+    integer dimension(39,8) :: vinit
+    common /sobdat/ poly,vinit
+end block data bdsobl
+subroutine inssobl(flag,dimen,atmost,taus,quasi,max_bn,iflag) ! in ssobol.f
+    logical dimension(2) :: flag
+    integer :: dimen
+    integer :: atmost
+    integer :: taus
+    real*8 dimension(40) :: quasi
+    integer :: max_bn
+    integer :: iflag
+    integer :: s
+    integer :: maxcol
+    integer dimension(40,31) :: sv
+    integer :: count
+    integer dimension(40) :: lastq
+    real*8 :: recipd
+    integer dimension(39) :: poly
+    integer dimension(39,8) :: vinit
+    common /sobol/ s,maxcol,sv,count,lastq,recipd
+    common /sobdat/ poly,vinit
+end subroutine inssobl
+subroutine genscrml(max_bn,lsm,shift) ! in ssobol.f
+    integer :: max_bn
+    integer dimension(40,31) :: lsm
+    integer dimension(40) :: shift
+    integer :: s
+    integer :: maxcol
+    common /sobol/ s,maxcol
+end subroutine genscrml
+subroutine genscrmu(usm,ushift) ! in ssobol.f
+    integer dimension(31,31) :: usm
+    integer dimension(31) :: ushift
+    integer :: s
+    integer :: maxcol
+    common /sobol/ s,maxcol
+end subroutine genscrmu
+function uni() ! in ssobol.f
+    double precision :: uni
+end function uni
+subroutine gossobl(quasi) ! in ssobol.f
+    real*8 dimension(40) :: quasi
+    integer :: s
+    integer :: maxcol
+    integer dimension(40,31) :: sv
+    integer :: count
+    integer dimension(40) :: lastq
+    real*8 :: recipd
+    common /sobol/ s,maxcol,sv,count,lastq,recipd
+end subroutine gossobl
+subroutine nsobol(n,quasi) ! in ssobol.f
+    integer, optional,check(shape(quasi,0)==n),depend(quasi) :: n=shape(quasi,0)
+    real*8 dimension(n,40) :: quasi
+    real :: s
+    common /sobol/ s
+end subroutine nsobol
+function exor(iin,jin) ! in ssobol.f
+    integer :: iin
+    integer :: jin
+    integer :: exor
+end function exor
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/

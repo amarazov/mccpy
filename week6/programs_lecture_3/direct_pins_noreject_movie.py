@@ -3,7 +3,7 @@ import random, pylab
 N = 10
 L = 20.0
 sigma = 0.75
-n_runs = 800
+n_runs = 8000
 data = []
 for run in range(n_runs):
     y = [random.uniform(0.0, L - 2 * N * sigma) for k in range(N)]
