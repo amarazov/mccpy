@@ -171,13 +171,13 @@ print 4.0 * n_hits / float(n_trials), math.sqrt(var / n_trials)
 
 The program of Section C1 used the exact value of pi in order to compute the error. In a real calculation, we don't know this result beforehand. One therefore replaces pi through its best estimate, the mean value <Obs>. Using
 
-<(Obs−pi)^2>∼<Obs^2>−pi^2∼<Obs^2>−<Obs>^2,
+[(Obs−pi)^2]∼[Obs^2]−pi^2∼[Obs^2]−[Obs]^2,
 
-we see that we have to estimate <Obs^2> - <Obs>^2.
+we see that we have to estimate [Obs^2] - [Obs]^2.
 
-Modify the program from Section C1 so that it not only estimates the mean value of Obs (Obs can be 0 or 4), but also of Obs^2 (which can be 16 or 0). Check that the square root of <Obs^2> - <Obs>^2 is approximately equal to 1.642.
+Modify the program from Section C1 so that it not only estimates the mean value of Obs (Obs can be 0 or 4), but also of Obs^2 (which can be 16 or 0). Check that the square root of [Obs^2] - [Obs]^2 is approximately equal to 1.642.
 
-* Upload your modified program, where a few added lines compute <Obs> and <Obs^2>, <Obs^2> - <Obs>^2, and its square root.
+* Upload your modified program, where a few added lines compute [Obs] and [Obs^2], [Obs^2] - [Obs]^2, and its square root.
 
 ## C2 (continued):
 
