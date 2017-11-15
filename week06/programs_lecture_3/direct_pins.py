@@ -12,4 +12,4 @@ for config in range(n_configs):
             if abs(x[-1] - x[k]) < 2.0 * sigma:
                 x = []
                 break
-    print x
+    print(x)
