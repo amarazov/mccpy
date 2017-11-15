@@ -10,5 +10,5 @@ for config in range(n_configs):
         x.sort()
         min_dist = min(x[k + 1] - x[k] for k in range(N - 1))
         if min_dist > 2.0 * sigma:
-            print x
+            print(x)
             break
