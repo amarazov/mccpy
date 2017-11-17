@@ -171,6 +171,7 @@ print 4.0 * n_hits / float(n_trials), math.sqrt(var / n_trials)
 
 The program of Section C1 used the exact value of pi in order to compute the error. In a real calculation, we don't know this result beforehand. One therefore replaces pi through its best estimate, the mean value <Obs>. Using
 
+
 [(Obs−pi)^2]∼[Obs^2]−pi^2∼[Obs^2]−[Obs]^2,
 
 we see that we have to estimate [Obs^2] - [Obs]^2.
