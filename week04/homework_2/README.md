@@ -51,7 +51,7 @@ for run in range(n_runs):
             hits[conf] += 1
 
 for conf in configurations:
-    print conf, hits[conf]
+    print(conf, hits[conf])
 ```
 
 Cut-and-paste this program into a file, then run it. Familiarize yourself with it (add a few print statements to see how it works). Then answer a few questions:
@@ -128,7 +128,7 @@ t = 0.0
 n_events = 5000000
 for event in range(n_events):
     if event % 100000 == 0:
-        print event
+        print(event)
     wall_times = [wall_time(pos[k][l], vel[k][l], sigma) for k, l  in singles]
     pair_times = [pair_time(pos[k], vel[k], pos[l], vel[l], sigma) for k, l in pairs]
     next_event = min(wall_times + pair_times)
@@ -164,7 +164,7 @@ for event in range(n_events):
             vel[b][k] -= e_perp[k] * scal
 
 for conf in configurations:
-    print conf, hits[conf]
+    print(conf, hits[conf])
 ```
 
 Note that in this program, we use del_xy = 0.1, and sigma = 0.1, in order to improve statistics.
