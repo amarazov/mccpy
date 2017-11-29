@@ -1,8 +1,10 @@
 # Монте Карло изчисления с Python
 
 ## Cъобщения
+- контролно 2 ще се проведе на 13.12.2017 от 18:00 в стая 107
+- домашно 4 със срок до 13.12.2017 https://classroom.github.com/g/uGqm8x-k
 - домашно 3 със срок до 6.12.2017 https://classroom.github.com/g/aAK7O_MF
-- домашно 2 със срок до 22.11.2017 https://classroom.github.com/g/0xsnZo9e
+
 
 ## Въведение
 
