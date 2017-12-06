@@ -2,6 +2,7 @@
 
 ## Cъобщения
 - контролно 2 ще се проведе на 13.12.2017 от 18:00 в стая 107
+- домашно 5 със срок до 20.12.2017 https://classroom.github.com/g/7cRpcSXU
 - домашно 4 със срок до 13.12.2017 https://classroom.github.com/g/uGqm8x-k
 - домашно 3 със срок до 6.12.2017 https://classroom.github.com/g/aAK7O_MF
 
