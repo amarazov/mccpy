@@ -1,6 +1,6 @@
 Instructions
 
-Note: <X> denotes the expectation of the random variable X which we denoted E(X) so far.
+Note: &lt;X&gt; denotes the expectation of the random variable X which we denoted E(X) so far.
 
 In this homework, you will grasp the intimate relation between sampling and integration and sense the full power of the Markov-chain Monte Carlo method, especially in high dimensions. Our goal will be to compute the volume of the sphere in 200 dimensions. This volume is smaller than
 
@@ -74,7 +74,7 @@ At each step, sample a new value of z as random.uniform(-1.0, 1.0), and count as
 
 When your program is ready, print it.
 
-Compute the average value <Q_3> = 2 N_hits / N_trials, and check that it is close to 4/3, that is the ratio of the sphere volume for d=3 to the sphere volume for d=2 (see table). Run your program for as long as possible, to be sure that the results come out OK. Compare your result for <Q_3> with the value 4/3. It should be extremely close.
+Compute the average value &lt;Q_3&gt; = 2 N_hits / N_trials, and check that it is close to 4/3, that is the ratio of the sphere volume for d=3 to the sphere volume for d=2 (see table). Run your program for as long as possible, to be sure that the results come out OK. Compare your result for &lt;Q_3&gt; with the value 4/3. It should be extremely close.
  
 ## A3
 
@@ -92,9 +92,9 @@ Then answer the following questions:
 
 V_sph(d=4) = pi^2 / 2
 
-V_sph(d=4) = V_sph(3) * Q_4, approximately equal to: V_sph(3) * <Q_4>
+V_sph(d=4) = V_sph(3) \* Q_4, approximately equal to: V_sph(3) \* &lt;Q_4&gt;
 
-V_sph(d=4) = V_sph(2) * Q_3 * Q_4, approximately equal to: V_sph(2) * <Q_3> * <Q_4>
+V_sph(d=4) = V_sph(2) \* Q_3 \* Q_4, approximately equal to: V_sph(2) \* &lt;Q_3&gt; \* &lt;Q_4&gt;
 
 ## B
 
@@ -133,7 +133,7 @@ Print your program, which works for a general d.
 
 ## B1 (continued)
 
-Test your program for d=4, by plotting the normed histogram of r = sqrt(x\[0] **2 + x\[1] ** 2 + ... + x\[3] ** 2). This can be done by the command pylab.hist(..., normed=True). Also plot the analytic curve P(r)=4 r^3 (0 < r< 1) on the same graph, and compare it to your histogram. Print the graphics file with this comparison.
+Test your program for d=4, by plotting the normed histogram of r = sqrt(x\[0] \*\* 2 + x\[1] \*\* 2 + ... + x\[3] \*\* 2). This can be done by the command pylab.hist(..., normed=True). Also plot the analytic curve P(r)=4 r^3 (0 < r< 1) on the same graph, and compare it to your histogram. Print the graphics file with this comparison.
 
 ## B1 (continued)
 
@@ -143,7 +143,7 @@ Test your program for d=20, again by plotting the histogram of r and plotting on
 
 Now,
 
-- introduce the calculation of <Q> into the program you wrote in Section B1, on the line of what was done in Sections A2 and A3.
+- introduce the calculation of &lt;Q&gt; into the program you wrote in Section B1, on the line of what was done in Sections A2 and A3.
 - Use your program to estimate the values of Q(4)=V_sph(4)/V_sph(3) and of Q(200)=V_sph(200)/V_sph(199)
 - Compare your result with the analytical formula that you can obtain from the program
 
@@ -170,9 +170,9 @@ In this section, you compute the actual volume V_sph(200) of the 200-dimensional
 
 ## C1
 
-- Modify your program of section B so that it loops over dimension d=1,2,3,4,5,6,7,..., d_max, and for each dimension d, compute the average value <Q(d+1)>. Each iteration should take a constant number of iterations, independent of d.
+- Modify your program of section B so that it loops over dimension d=1,2,3,4,5,6,7,..., d_max, and for each dimension d, compute the average value &lt;Q(d+1)&gt;. Each iteration should take a constant number of iterations, independent of d.
 - Use the values of Q(d+1) which you are computing iteratively, to evaluate V_sph(4) once more (start from the value V_sph(1)=2). Write down your result, and compare it with pi^2 / 2.
-- Use this program to compute, in one run, V_sph(200) = 2 * <Q_2> * <Q_3> * <Q_4> * .... * <Q(200)> (NB: the initial factor of 2 corresponds to the volume of the d=1 sphere: V_sph(1)=2). To do that, before switching from d to (d+1) dimensions, use the value of Q(d+1) to obtain V_sph(d+1) as a product of V_sph(d) by Q(d+1). At the end, write down your result for V_sph(200)
+- Use this program to compute, in one run, V_sph(200) = 2 * &lt;Q_2&gt; * &lt;Q_3&gt; * &lt;Q_4&gt; * .... * &lt;Q(200)&gt; (NB: the initial factor of 2 corresponds to the volume of the d=1 sphere: V_sph(1)=2). To do that, before switching from d to (d+1) dimensions, use the value of Q(d+1) to obtain V_sph(d+1) as a product of V_sph(d) by Q(d+1). At the end, write down your result for V_sph(200)
 - print this program, which allows you to compute V_sph for any dimensionality.
 
 ## C1 (continued)
@@ -185,7 +185,7 @@ In every Monte Carlo calculation, we should control the error. To save time, you
 
 - Modify the program from Section C1, by adding an external cycle which loops over values of n_trials = 1, 10, 100, 1000, ...
 - For each choice of n_trials, perform n_runs independent runs (take for instance n_runs=10) of the calculation of V_sph(20). For each run, always start from the origin as initial condition.
-- Compute the averages <V_sph(20)> and <V_sph(20)^2> for the n_runs runs, and estimate the error on the average as sqrt(<V_sph(20)^2> - <V_sph(20)>^2)/sqrt(n_runs)
+- Compute the averages &lt;V_sph(20)&gt; and &lt;V_sph(20)^2&gt; for the n_runs runs, and estimate the error on the average as sqrt(&lt;V_sph(20)^2&gt; - &lt;V_sph(20)&gt;^2)/sqrt(n_runs)
 - Print your modified program.
 - Produce the following table:
 
