@@ -1,0 +1,15 @@
+dateutils==0.6.6
+h5py==2.7.1
+joblib==0.11
+numpy==1.13.3
+pandas==0.21.1
+patsy==0.4.1
+pymc3==3.2
+python-dateutil==2.6.1
+pytz==2017.3
+qPython==1.2.2
+scipy==1.0.0
+six==1.11.0
+Theano==1.0.1
+tqdm==4.19.5
+vtk==8.0.0.dev20170717
