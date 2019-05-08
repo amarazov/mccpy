@@ -2,10 +2,9 @@
 
 ## Cъобщения
 - Заниманията ще се провеждат във вторник от 18:30 в стая 107
-- На 23.04.2019 г. 18:30 ще бъде проведено контролно.
-- https://classroom.github.com/a/24Z8bGNB - домашно 2; срок до 24.04.2019.
-- https://classroom.github.com/a/GkpJgdTI - домашно 3; срок до 01.05.2019.
 - https://classroom.github.com/a/U4Ze_xE- - домашно 4; срок до 08.05.2019.
+- https://classroom.github.com/a/7_fHC-Mc - домашно 5; срок до 22.05.2019.
+- https://classroom.github.com/g/X-BZ2KJO - предложение за проект; срок до 05.06.2019.
 
 
 ## Въведение
