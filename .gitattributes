@@ -1,0 +1,6 @@
+*.csv linguist-detectable=false
+*.dat linguist-detectable=false
+*.idx linguist-detectable=false
+*.mtx linguist-detectable=false
+*.npy linguist-detectable=false
+*.p linguist-detectable=false
